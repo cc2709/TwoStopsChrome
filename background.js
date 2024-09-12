@@ -23,7 +23,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                chrome.runtime.sendMessage({ message: data.message });
+                chrome.storage.session.set({ 'linkUrl': downloadUrl }).then(() => { console.log('linkUrl saved') });
             })
             .catch((error) => console.error('Error:', error));
     }

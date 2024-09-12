@@ -7,3 +7,11 @@ document.addEventListener('COMContentLoaded', () => {
         }
     });
 });
+
+chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'session' && changes.linkUrl.newValue) {
+        document.getElementById('msg').innerText = changes.linkUrl.newValue;
+    }
+});
+
+
